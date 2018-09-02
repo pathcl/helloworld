@@ -16,6 +16,16 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: pathcl/nginx-php-pgsql:0.0.1
+        image: pathcl/helloworld:0.0.1
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: nginx

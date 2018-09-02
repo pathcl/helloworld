@@ -15,6 +15,8 @@ rls ?= version.env
 include $(rls)
 export $(shell sed 's/=.*//' $(rls))
 
+nginx_pod=`kubectl get pods --no-headers=true|grep nginx|cut -f1 -d' '`
+pgsql_pod=`kubectl get pods --no-headers=true|grep postgres|cut -f1 -d' '`
 
 # HELP
 # This will output the help for each task
@@ -52,4 +54,19 @@ publish: ## TODO: tag && publish image to hub.docker.com
 
 version: ## Output the current version
 	@echo $(APPVERSION)
-	
+
+nginx:
+	@echo 'Forwarding nginx traffic'
+	kubectl port-forward $(nginx_pod) 8080:80
+
+postgres:
+	@echo 'Forwarding nginx traffic'
+	kubectl port-forward $(pgsql_pod) 5432:5432
+
+deploy:
+	@echo 'Deploying postgres database'
+	kubectl create -f helloworld/database-all-objects-one-file.yml
+	@echo 'Deploying frontend (nginx)'
+	kubectl create -f helloworld/frontend.yml
+	@echo 'Deploying redis'
+	kubectl create -f helloworld/redis.yml
