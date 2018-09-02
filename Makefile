@@ -60,7 +60,7 @@ nginx:
 	kubectl port-forward $(nginx_pod) 8080:80
 
 postgres:
-	@echo 'Forwarding nginx traffic'
+	@echo 'Forwarding postgres traffic'
 	kubectl port-forward $(pgsql_pod) 5432:5432
 
 deploy:
