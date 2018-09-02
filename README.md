@@ -24,6 +24,10 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 
 # Application setup
 
+## Clone the repo
+
+    $ git clone https://github.com/pathcl/helloworld.git
+
 ## Database
     psql -U postgres -f database.sql -h localhost
     kubectl port-forward `kubectl get pods --no-headers=true|grep postgres|cut -f1 -d' '` 5432:5432
