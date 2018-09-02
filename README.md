@@ -77,10 +77,7 @@ This command will try to install: postgresql, nginx, redis. You should wait unti
 
 This is only needed first time since we're using persistent volumes.
 
-    make postgres
-
-Open another terminal.
-
+    make postgres &
     psql -U postgres -f helloworld/database.sql -h localhost
 
 
