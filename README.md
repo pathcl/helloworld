@@ -26,7 +26,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 
 ### Clone the repo
 
-    git clone https://github.com/pathcl/helloworld.git
+    git clone https://github.com/pathcl/helloworld.git && cd helloworld
 
 You'll find several files:
 
