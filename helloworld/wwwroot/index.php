@@ -10,8 +10,8 @@ try{
 
  // display a message if connected to the PostgreSQL successfully
  if($conn){
- echo "Connected to the <strong>$db</strong> database successfully!\n";
- echo "";
+ echo "Connected to the <strong>$db</strong> database successfully!";
+ echo "\n";
 
  // retrieve data
 
@@ -69,11 +69,8 @@ try{
   }
 
 
-  // Calling function to execute sql query
-  $arrValues = var_dump($row);
-
   // Making json string
-  $jsonValue = json_encode($arrValues);
+  $jsonValue = json_encode($row);
 
   // Opening a redis connection
   openRedisConnection( 'redis.default.svc.cluster.local', 6379 );
@@ -85,6 +82,8 @@ try{
   $val = getValueFromKey( 'somekey1' );
 
   //  Output:  the json encoded array from redis
+  echo "<strong> output from redis</strong>";
+  echo "\n";
   echo $val;
 
   // Unsetting value from redis
