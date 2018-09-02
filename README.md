@@ -64,7 +64,14 @@ Main folder for web application
 
     make -i deploy
 
-This command will try to install: postgresql, nginx, redis
+This command will try to install: postgresql, nginx, redis. You should wait until every pod is running:
+
+    kubectl get pods
+
+    NAME                        READY     STATUS    RESTARTS   AGE
+    nginx-bb58ff6bb-9mztl       1/1       Running   0          1m
+    postgres-77cd88ff7d-kr2mg   1/1       Running   0          1m
+    redis-6c78c5c69-w29f2       1/1       Running   0          1m
 
 ## Populate database for first time deployment
 
@@ -74,7 +81,14 @@ This is only needed first time since we're using persistent volumes.
 
 Open another terminal.
 
-    psql -U postgres -f helloprint/database.sql -h localhost
+    psql -U postgres -f helloworld/database.sql -h localhost
+
+
+## Test application
+
+    make nginx
+
+* Open your browser http://127.0.0.1:8080
 
 # Separate steps if needed
 
@@ -98,4 +112,5 @@ Open another terminal.
     kubectl port-forward $NGINX_POD 8080:80
 
 or 
-    make debug
+    
+    make nginx
