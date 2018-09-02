@@ -57,7 +57,7 @@ You'll find several files:
 
 Main folder for web application 
 
-* In 'helloprint/wwwroot' folder you'll find the PHP app. Make changes there and then do 'make build' in order to create image. 
+* In 'helloworld/wwwroot' folder you'll find the PHP app. Make changes there and then do 'make build' in order to create image. 
 * P.D: You'll need to push the image to your registry (i.e. hub.docker.com)
 
 ## Deploy everything
